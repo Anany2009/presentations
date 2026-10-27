@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="ar" dir="ltr" data-theme="stone"><head>
+<html lang="ar" dir="ltr" data-theme="stone">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>From Madinah to Sacramento</title>
@@ -23,6 +24,7 @@
   --brass:#C9A86A; --brass-2:#E2C88F; --brass-rgb:201,168,106;
   --f-ar:'Amiri',serif; --f-dis:'Cormorant Garamond',serif; --f-ui:'Inter',sans-serif;
 }
+:root{--mas-blue:#00489C; --mas-green:#00B430; --ease:cubic-bezier(.22,.61,.36,1)}
 [data-theme="stone"]{
   --ink:#F1ECE2; --ink-2:#E7E0D2; --ivory:#1F1D1A; --ivory-2:#3A3732; --muted:#6B665D;
   --brass:#6F7A4C; --brass-2:#4F5935; --brass-rgb:111,122,76;
@@ -62,6 +64,13 @@ body.cursor{cursor:default}
 .vtr{font:italic 400 32px/1.4 var(--f-dis);color:var(--ivory-2);text-align:center;margin-top:20px;letter-spacing:.02em}
 .center{position:absolute;left:160px;right:160px;top:50%;transform:translateY(-50%);text-align:center}
 
+
+/* English-first typography (English large on top, Arabic smaller below) */
+.en-1{font:600 84px/1.12 var(--f-dis);color:var(--ivory);letter-spacing:.003em}
+.en-2{font:500 52px/1.2 var(--f-dis);color:var(--ivory)}
+.ar-2{font:400 46px/1.55 var(--f-ar);color:var(--brass-2)}
+.ar-3{font:400 34px/1.5 var(--f-ar);color:var(--muted);direction:rtl;unicode-bidi:isolate}
+
 /* photos */
 .ph{position:absolute;inset:0;overflow:hidden}
 .ph img{width:100%;height:100%;object-fit:cover;transform:scale(1.0);transition:transform 32s linear}
@@ -83,8 +92,8 @@ body.cursor{cursor:default}
 .tl .dot{width:24px;height:24px;border-radius:50%;margin:0 auto;background:var(--ink);border:2px solid rgba(var(--brass-rgb),.45);transition:all .9s var(--ease)}
 .tl .c.in .dot{background:var(--brass);border-color:var(--brass);box-shadow:0 0 0 8px rgba(var(--brass-rgb),.12)}
 .tl .yr{font:500 64px/1 var(--f-dis);color:var(--brass);margin-top:36px}
-.tl .t-ar{font:700 34px/1.35 var(--f-ar);margin-top:22px;padding:0 14px}
-.tl .t-en{font:400 22px/1.4 var(--f-ui);color:var(--muted);margin-top:10px}
+.tl .t-ar{font:400 28px/1.4 var(--f-ar);color:var(--muted);margin-top:8px;padding:0 14px}
+.tl .t-en{font:500 32px/1.3 var(--f-dis);color:var(--ivory);margin-top:20px;padding:0 10px}
 
 /* cards */
 .cards{position:absolute;left:150px;right:150px;top:330px;display:grid;grid-template-columns:repeat(3,1fr);gap:70px}
@@ -92,15 +101,15 @@ body.cursor{cursor:default}
 .card .por{width:300px;height:360px;margin:0 auto;border:1px solid rgba(var(--brass-rgb),.5);overflow:hidden;position:relative;background:var(--ink-2)}
 .card .por img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15) sepia(.1)}
 .card .por .mono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 120px var(--f-ar);color:rgba(var(--brass-rgb),.35)}
-.card .n-ar{font:700 44px/1.3 var(--f-ar);margin-top:34px}
-.card .t-ar{font:400 30px/1.4 var(--f-ar);color:var(--brass-2);margin-top:6px}
-.card .n-en{font:500 24px/1.3 var(--f-dis);letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-2);margin-top:16px}
+.card .n-ar{font:400 28px/1.45 var(--f-ar);color:var(--muted);margin-top:10px}
+.card .t-en{font:500 28px/1.3 var(--f-dis);color:var(--brass-2);margin-top:6px}
+.card .n-en{font:600 40px/1.2 var(--f-dis);color:var(--ivory);margin-top:30px}
 
 /* words row */
 .words{position:absolute;left:120px;right:120px;display:flex;justify-content:space-around;align-items:flex-start}
 .word{text-align:center}
-.word .w-ar{font:700 92px/1.2 var(--f-ar)}
-.word .w-en{font:500 34px/1.2 var(--f-dis);letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-top:14px}
+.word .w-ar{font:400 44px/1.4 var(--f-ar);color:var(--brass-2);margin-top:10px}
+.word .w-en{font:600 var(--ww,88px)/1.1 var(--f-dis);color:var(--ivory)}
 
 /* film */
 video{position:absolute;inset:0;width:100%;height:100%;background:#000}
@@ -111,15 +120,18 @@ video{position:absolute;inset:0;width:100%;height:100%;background:#000}
 #black.on{opacity:1}
 aside.notes{display:none}
 img[data-missing]{display:none}
+.logo-light{display:none}
+[data-theme="stone"] .slide:not(.tone-dark) .logo-dark{display:none}
+[data-theme="stone"] .slide:not(.tone-dark) .logo-light{display:inline}
 .ph:has(> img[data-missing]){display:none}
 #num{position:fixed;right:14px;bottom:10px;font:12px var(--f-ui);color:#333;z-index:9}
 </style>
 </head>
 <body>
-<div id="stage" style="left: 506px; top: 50%; transform-origin: 0px 0px; transform: translate(-506px, -284.625px) scale(0.527083);">
+<div id="stage">
 
 <svg width="0" height="0" style="position:absolute"><defs>
-  <symbol id="star8" viewBox="-100 -100 200 200"><g fill="none" stroke="currentColor" stroke-width="1"><rect x="-62" y="-62" width="124" height="124"></rect><rect x="-62" y="-62" width="124" height="124" transform="rotate(45)"></rect><circle r="38"></circle></g></symbol>
+  <symbol id="star8" viewBox="-100 -100 200 200"><g fill="none" stroke="currentColor" stroke-width="1"><rect x="-62" y="-62" width="124" height="124"/><rect x="-62" y="-62" width="124" height="124" transform="rotate(45)"/><circle r="38"/></g></symbol>
 </defs></svg>
 
 <!-- ============ I · THE BEGINNING ============ -->
@@ -127,15 +139,15 @@ img[data-missing]{display:none}
 <section class="slide" data-title="01 · Opening">
   <div class="ph kb"><img class="grade" src="../../media/n_night.jpg" style="object-position:50% 60%"></div>
   <div class="shade-r"></div>
-  <div class="abs" style="right:130px;top:250px;width:940px;text-align:right">
+  <div class="abs" style="right:130px;top:190px;width:1120px;text-align:right">
     <div class="kick f fade">MAS Sacramento</div>
-    <div class="ar h-ar f" style="margin-top:40px;font-size:90px">مِنْ رِحَابِ المَسْجِدِ النَّبَوِيِّ<br>إِلَى قُلُوبِ أَبْنَائِنَا فِي أَمْرِيكَا</div>
-    <div class="rule f fade" style="margin:44px 0 36px"></div>
-    <div class="h-en f">From the Prophet’s Mosque<br>to the Hearts of Our Children in America</div>
+    <div class="en-1 f" style="margin-top:32px;font-size:74px">From the Prophet’s Mosque<br>to the Hearts of Our Children in America</div>
+    <div class="rule f fade" style="margin:40px 0 30px"></div>
+    <div class="ar ar-2 f">مِنْ رِحَابِ المَسْجِدِ النَّبَوِيِّ إِلَى قُلُوبِ أَبْنَائِنَا فِي أَمْرِيكَا</div>
   </div>
   <div class="abs f fade" style="right:130px;bottom:92px;text-align:right">
-    <div class="ar" style="font:700 46px/1.3 var(--f-ar)">د. محمد إبراهيم عناني عطية</div>
-    <div style="font:500 26px/1.3 var(--f-dis);letter-spacing:.2em;text-transform:uppercase;color:var(--ivory-2);margin-top:6px">Dr. Mohamed Attia</div>
+    <div class="en-2" style="font-size:46px">Dr. Mohamed Attia</div>
+    <div class="ar" style="font:400 34px/1.4 var(--f-ar);color:var(--brass-2);margin-top:4px">د. محمد إبراهيم عناني عطية</div>
   </div>
   <img class="abs f fade" src="../../media/mas_white.png" style="left:120px;bottom:100px;width:320px;opacity:.9">
   <aside class="notes">يظهر أثناء صعودك إلى المنصة ثم يبقى خلال البسملة والحمد والسلام.
@@ -144,11 +156,11 @@ img[data-missing]{display:none}
 </section>
 
 <section class="slide" data-title="02 · The question">
-  <svg class="star" style="left:50%;top:50%;width:900px;height:900px;margin:-450px 0 0 -450px"><use href="#star8"></use></svg>
+  <svg class="star" style="left:50%;top:50%;width:900px;height:900px;margin:-450px 0 0 -450px"><use href="#star8"/></svg>
   <div class="center">
     <div class="kick f fade">Chapter I · The Beginning</div>
-    <div class="ar big-ar f" style="margin-top:56px">ما الذي أحمله معي<br>من المدينة المنورة؟</div>
-    <div class="big-en f" style="margin-top:46px;font-size:42px">What do I carry from Madinah<br>to this community?</div>
+    <div class="en-1 f" style="margin-top:50px;font-size:96px">What do I carry from Madinah<br>to this community?</div>
+    <div class="ar ar-2 f" style="margin-top:40px;font-size:52px">ما الذي أحمله معي من المدينة المنورة؟</div>
   </div>
   <aside class="notes">المحور الأول: «هل أقف أمامكم وأحدثكم عن شهاداتي؟…» حتى ذكر عنوان الكلمة.
 ① السؤال بالعربية عند: «ما الذي أريد أن أحمله معي من المدينة المنورة…» ② الإنجليزية.
@@ -160,11 +172,11 @@ img[data-missing]{display:none}
 <section class="slide" data-title="03 · A child raised in Madinah">
   <div class="ph kb"><img class="grade" src="../../media/n_dawn.jpg" style="object-position:50% 70%"></div>
   <div class="shade-b"></div>
-  <div class="abs" style="left:0;right:0;bottom:120px;text-align:center">
+  <div class="abs" style="left:0;right:0;bottom:110px;text-align:center">
     <div class="kick f fade">Chapter II · The Journey of Knowledge</div>
-    <div class="ar h-ar f" style="margin-top:34px">طفلٌ لم يتجاوز ستةَ أشهر… نشأ في المدينة</div>
-    <div class="h-en f" style="margin-top:20px">Six months old — and raised in Madinah</div>
-    <div class="f" style="margin-top:48px"><div class="ar verse" style="font-size:52px"><span class="br">﴿</span>وَمَا بِكُم مِّن نِّعْمَةٍ فَمِنَ اللَّهِ<span class="br">﴾</span></div><div class="ar vref">[النحل: ٥٣]</div></div>
+    <div class="en-1 f" style="margin-top:30px;font-size:84px">Six months old — and raised in Madinah</div>
+    <div class="ar ar-2 f" style="margin-top:14px">طفلٌ لم يتجاوز ستةَ أشهر… نشأ في المدينة</div>
+    <div class="f" style="margin-top:40px"><div class="ar verse" style="font-size:50px"><span class="br">﴿</span>وَمَا بِكُم مِّن نِّعْمَةٍ فَمِنَ اللَّهِ<span class="br">﴾</span></div><div class="ar vref">[النحل: ٥٣]</div></div>
   </div>
   <aside class="notes">المحور الثاني: «اسمحوا لي أن أبدأ معكم من البداية…»
 ① العنوان عند: «جئت إلى المدينة المنورة وأنا طفل صغير…» ② الإنجليزية ③ الآية عند: «وصدق الله العظيم».</aside>
@@ -172,30 +184,30 @@ img[data-missing]{display:none}
 
 <section class="slide" data-title="04 · Carry it in the heart">
   <div class="center">
-    <div class="ar f" style="font:400 52px/1.6 var(--f-ar);color:var(--muted)">لا نريد أن نُخرِّج أطفالًا يحفظون القرآن بألسنتهم فقط…</div>
-    <div class="ar big-ar f" style="margin-top:30px;font-size:96px">نريد جيلًا يحمل القرآن في قلبه<br>ويظهر أثرُه في سلوكه</div>
-    <div class="rule f fade" style="margin:50px 300px 40px"></div>
-    <div class="big-en f" style="font-size:38px">A generation that carries the Qur’an in its heart<br>— and lives it.</div>
+    <div class="f" style="font:italic 400 44px/1.4 var(--f-dis);color:var(--muted)">Not children who memorize the Qur’an with their tongues only…</div>
+    <div class="en-1 f" style="margin-top:26px;font-size:92px">A generation that carries<br>the Qur’an in its heart — and lives it</div>
+    <div class="rule f fade" style="margin:46px 300px 36px"></div>
+    <div class="ar ar-2 f">نريد جيلًا يحمل القرآن في قلبه، ويظهر أثرُه في سلوكه</div>
   </div>
   <aside class="notes">نهاية المحور الثاني: «القرآن منهج حياة…» ثم الجملة المحورية.
 ① «نحن لا نريد…» ② «نريد أن نربي جيلًا…» ③④ الإنجليزية.</aside>
 </section>
 
 <section class="slide" data-title="05 · Timeline">
-  <svg class="star" style="right:-160px;top:-180px;width:640px;height:640px"><use href="#star8"></use></svg>
-  <div class="abs" style="left:150px;right:150px;top:110px;display:flex;justify-content:space-between;align-items:flex-end">
-    <div><div class="kick">The Journey of Knowledge</div><div class="h-en" style="margin-top:26px;font-size:44px;letter-spacing:.1em">A Journey That Began in Madinah</div></div>
-    <div class="ar h-ar" style="font-size:80px">رحلةٌ بدأت في المدينة</div>
+  <svg class="star" style="right:-160px;top:-180px;width:640px;height:640px"><use href="#star8"/></svg>
+  <div class="abs" style="left:150px;right:150px;top:100px;display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="kick">The Journey of Knowledge</div><div class="en-1" style="margin-top:22px;font-size:72px">A Journey That Began in Madinah</div></div>
+    <div class="ar ar-2" style="font-size:46px">رحلةٌ بدأت في المدينة</div>
   </div>
   <div class="tl">
     <div class="line"><i></i></div>
     <div class="cols">
-      <div class="c f fade"><div class="dot"></div><div class="yr">6 mo.</div><div class="ar t-ar">النشأة في المدينة</div><div class="t-en">Growing up in Madinah</div></div>
-      <div class="c f fade"><div class="dot"></div><div class="yr">2015</div><div class="ar t-ar">الإقراء في المسجد النبوي</div><div class="t-en">Teaching at the Prophet’s Mosque — to this day</div></div>
-      <div class="c f fade"><div class="dot"></div><div class="yr">2016</div><div class="ar t-ar">البكالوريوس</div><div class="t-en">B.A., College of the Holy Qur’an</div></div>
-      <div class="c f fade"><div class="dot"></div><div class="yr">2018</div><div class="ar t-ar">الماجستير في القراءات</div><div class="t-en">M.A. in the Qira’at</div></div>
-      <div class="c f fade"><div class="dot"></div><div class="yr">2021</div><div class="ar t-ar">الدكتوراه في القراءات</div><div class="t-en">Ph.D. in the Qira’at</div></div>
-      <div class="c f fade"><div class="dot"></div><div class="yr" style="color:var(--ivory)">Now</div><div class="ar t-ar">ساكرامنتو</div><div class="t-en">A new chapter</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="yr">6 mo.</div><div class="t-en">Growing up in Madinah</div><div class="ar t-ar">النشأة في المدينة</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="yr">2015</div><div class="t-en">Teaching at the Prophet’s Mosque — to this day</div><div class="ar t-ar">الإقراء في المسجد النبوي</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="yr">2016</div><div class="t-en">B.A., College of the Holy Qur’an</div><div class="ar t-ar">البكالوريوس</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="yr">2018</div><div class="t-en">M.A. in the Qira’at</div><div class="ar t-ar">الماجستير في القراءات</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="yr">2021</div><div class="t-en">Ph.D. in the Qira’at</div><div class="ar t-ar">الدكتوراه في القراءات</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="yr" style="color:var(--ivory)">Now</div><div class="t-en">Sacramento — a new chapter</div><div class="ar t-ar">ساكرامنتو</div></div>
     </div>
   </div>
   <aside class="notes">المحور الثالث (بدايته): «بعد الانتهاء من المرحلة الثانوية…»
@@ -206,28 +218,29 @@ img[data-missing]{display:none}
 <section class="slide" data-title="06 · Islamic University of Madinah">
   <div class="ph kb"><img class="grade" src="../../media/ium_gate.jpg" style="object-position:50% 55%"></div>
   <div class="shade-b"></div>
-  <div class="abs" style="left:150px;right:150px;bottom:110px;display:flex;justify-content:space-between;align-items:flex-end">
-    <div class="f"><div class="kick">College of the Holy Qur’an</div><div class="h-en" style="margin-top:22px;font-size:46px">The Islamic University<br>of Madinah</div></div>
-    <div class="ar f" style="text-align:right"><div class="h-ar" style="font-size:80px">الجامعة الإسلامية<br>بالمدينة المنورة</div><div style="font:400 36px var(--f-ar);color:var(--brass-2);margin-top:10px">كلية القرآن الكريم · قسم القراءات</div></div>
+  <div class="abs" style="left:150px;right:150px;bottom:100px">
+    <div class="kick f fade">College of the Holy Qur’an · Department of Qira’at</div>
+    <div class="en-1 f" style="margin-top:24px;font-size:88px">The Islamic University of Madinah</div>
+    <div class="ar ar-2 f" style="margin-top:12px;text-align:left">الجامعة الإسلامية بالمدينة المنورة · كلية القرآن الكريم · قسم القراءات</div>
   </div>
   <aside class="notes">المحور الثالث: «وحصلت على درجة البكالوريوس… الماجستير… الدكتوراه».
 ① الإنجليزية ② العربية.</aside>
 </section>
 
 <section class="slide" data-title="07 · The Qira'at — an unbroken chain">
-  <div class="abs" style="left:150px;top:120px;width:760px">
+  <div class="abs" style="left:150px;top:110px;width:820px">
     <div class="kick f fade">The Science of Qira’at</div>
-    <div class="ar h-ar f" style="margin-top:34px;text-align:right">علمٌ قائمٌ على<br>التلقي والمشافهة والإسناد</div>
-    <div class="h-en f" style="margin-top:28px;font-size:36px">Received by hearing.<br>Passed on by reciting.<br>Linked by an unbroken chain.</div>
+    <div class="en-1 f" style="margin-top:30px;font-size:76px">Received by hearing.<br>Passed on by reciting.<br>Linked by an unbroken chain.</div>
+    <div class="ar ar-2 f" style="margin-top:26px;text-align:left">علمٌ قائمٌ على التلقي والمشافهة والإسناد</div>
   </div>
-  <div class="abs" style="right:220px;top:120px;width:520px;height:640px">
-    <div class="abs f fade" style="left:259px;top:40px;width:2px;height:560px;background:linear-gradient(180deg,var(--brass),rgba(var(--brass-rgb),.15))"></div>
-    <div class="abs f fade ar" style="left:0;right:0;top:0;text-align:center;font:700 52px var(--f-ar);color:var(--brass-2)">النبي ﷺ</div>
-    <div class="abs f fade" style="left:0;right:0;top:170px;text-align:center"><span class="ar" style="font:400 38px var(--f-ar);background:var(--ink);padding:0 22px">الصحابة · القرّاء · العلماء</span></div>
-    <div class="abs f fade" style="left:0;right:0;top:330px;text-align:center"><span class="ar" style="font:400 38px var(--f-ar);background:var(--ink);padding:0 22px">الشيخ ← تلميذه</span></div>
-    <div class="abs f fade" style="left:0;right:0;top:490px;text-align:center"><span class="ar" style="font:700 44px var(--f-ar);background:var(--ink);padding:0 22px">… جيلًا بعد جيل</span></div>
+  <div class="abs" style="right:200px;top:110px;width:560px;height:640px">
+    <div class="abs f fade" style="left:279px;top:40px;width:2px;height:560px;background:linear-gradient(180deg,var(--brass),rgba(var(--brass-rgb),.15))"></div>
+    <div class="abs f fade" style="left:0;right:0;top:0;text-align:center"><span style="font:600 48px var(--f-dis);color:var(--brass-2);background:var(--ink);padding:0 20px">The Prophet ﷺ</span></div>
+    <div class="abs f fade" style="left:0;right:0;top:165px;text-align:center"><span style="font:500 36px var(--f-dis);background:var(--ink);padding:0 20px">Companions · Reciters · Scholars</span></div>
+    <div class="abs f fade" style="left:0;right:0;top:325px;text-align:center"><span style="font:500 36px var(--f-dis);background:var(--ink);padding:0 20px">Teacher → Student</span></div>
+    <div class="abs f fade" style="left:0;right:0;top:485px;text-align:center"><span style="font:600 40px var(--f-dis);background:var(--ink);padding:0 20px">…generation after generation</span></div>
   </div>
-  <div class="abs f" style="left:150px;right:150px;bottom:90px"><div class="ar verse" style="font-size:54px"><span class="br">﴿</span>إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ<span class="br">﴾</span></div><div class="ar vref">[الحجر: ٩]</div><div class="vtr">“Indeed, it is We who sent down the Reminder, and indeed, We will be its guardian.”</div></div>
+  <div class="abs f" style="left:150px;right:150px;bottom:80px"><div class="ar verse" style="font-size:52px"><span class="br">﴿</span>إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ<span class="br">﴾</span></div><div class="ar vref">[الحجر: ٩]</div><div class="vtr">“Indeed, it is We who sent down the Reminder, and indeed, We will be its guardian.”</div></div>
   <aside class="notes">المحور الثالث: «قد يسأل بعض الحاضرين: ما معنى التخصص في القراءات؟…»
 السلسلة تُرسم سطرًا سطرًا مع شرحك: «فالقارئ يتعلم من شيخه، وشيخه تعلم من شيخه…»
 الآية عند: «قال الله سبحانه وتعالى: إنا نحن نزلنا الذكر…»
@@ -235,14 +248,14 @@ img[data-missing]{display:none}
 </section>
 
 <section class="slide" data-title="08 · My teachers">
-  <div class="abs" style="left:150px;right:150px;top:110px;display:flex;justify-content:space-between;align-items:flex-end">
-    <div><div class="kick">The Scholars Who Shaped My Journey</div><div class="h-en" style="margin-top:26px;font-size:42px">My Teachers</div></div>
-    <div class="ar h-ar" style="font-size:80px">مشايخي</div>
+  <div class="abs" style="left:150px;right:150px;top:100px;display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="kick">The Scholars Who Shaped My Journey</div><div class="en-1" style="margin-top:22px;font-size:72px">My Teachers</div></div>
+    <div class="ar ar-2" style="font-size:46px">مشايخي</div>
   </div>
   <div class="cards">
-    <div class="card f"><div class="por"><div class="mono ar">إ</div><img src="../../media/sheikh_akhdar.jpg" onerror="this.dataset.missing=1"></div><div class="ar n-ar">الشيخ إبراهيم الأخضر</div><div class="ar t-ar">شيخ قرّاء المدينة المنورة</div><div class="n-en">Sheikh Ibrahim Al-Akhdar</div></div>
-    <div class="card f"><div class="por"><div class="mono ar">ك</div><img src="../../media/sheikh_rajih.jpg" onerror="this.dataset.missing=1"></div><div class="ar n-ar">الشيخ محمد كُرَيِّم راجح</div><div class="ar t-ar">شيخ قرّاء الشام</div><div class="n-en">Sheikh Muhammad Kuraim Rajih</div></div>
-    <div class="card f"><div class="por"><div class="mono ar">إ</div><img src="../../media/sheikh_fikri.jpg" onerror="this.dataset.missing=1"></div><div class="ar n-ar">الشيخ إيهاب فكري</div><div class="ar t-ar">المقرئ بالقراءات العشر بالمسجد النبوي</div><div class="n-en">Sheikh Ihab Fikri</div></div>
+    <div class="card f"><div class="por"><div class="mono ar">إ</div><img src="../../media/sheikh_akhdar.jpg" onerror="this.dataset.missing=1"></div><div class="n-en">Sheikh Ibrahim Al-Akhdar</div><div class="t-en">Sheikh of the Qurra’ of Madinah</div><div class="ar n-ar">الشيخ إبراهيم الأخضر · شيخ قرّاء المدينة المنورة</div></div>
+    <div class="card f"><div class="por"><div class="mono ar">ك</div><img src="../../media/sheikh_rajih.jpg" onerror="this.dataset.missing=1"></div><div class="n-en">Sheikh Muhammad Kuraim Rajih</div><div class="t-en">Sheikh of the Qurra’ of the Levant</div><div class="ar n-ar">الشيخ محمد كُرَيِّم راجح · شيخ قرّاء الشام</div></div>
+    <div class="card f"><div class="por"><div class="mono ar">إ</div><img src="../../media/sheikh_fikri.jpg" onerror="this.dataset.missing=1"></div><div class="n-en">Sheikh Ihab Fikri</div><div class="t-en">Teacher of the Ten Qira’at, the Prophet’s Mosque</div><div class="ar n-ar">الشيخ إيهاب فكري · المقرئ بالقراءات العشر بالمسجد النبوي</div></div>
   </div>
   <aside class="notes">المحور الرابع: «من أعظم النعم… أن يرزقه مشايخ…»
 ① الشيخ إبراهيم الأخضر (توقف قليلًا عند اسمه) ② الشيخ محمد كريّم راجح ③ الشيخ إيهاب فكري.
@@ -250,12 +263,12 @@ img[data-missing]{display:none}
 </section>
 
 <section class="slide" data-title="09 · Knowledge and mercy">
-  <div class="abs" style="left:0;right:0;top:300px;display:flex;justify-content:center;align-items:center;gap:120px">
-    <div class="word f"><div class="ar w-ar" style="font-size:120px">إتقانُ العلم</div><div class="w-en">Mastery</div></div>
-    <div class="f fade" style="width:1px;height:260px;background:var(--brass)"></div>
-    <div class="word f"><div class="ar w-ar" style="font-size:120px">وحُسنُ التعامل</div><div class="w-en">Mercy</div></div>
+  <div class="abs" style="left:0;right:0;top:270px;display:flex;justify-content:center;align-items:center;gap:120px">
+    <div class="word f"><div class="w-en">Mastery</div><div class="ar w-ar">إتقانُ العلم</div></div>
+    <div class="f fade" style="width:1px;height:240px;background:var(--brass)"></div>
+    <div class="word f"><div class="w-en">Mercy</div><div class="ar w-ar">وحُسنُ التعامل</div></div>
   </div>
-  <div class="abs f" style="left:0;right:0;bottom:170px;text-align:center"><div class="ar body-ar" style="color:var(--muted)">العلم دون رحمة قد يتحول إلى قسوة… والرحمة دون علم لا تؤدي للطالب حقه</div><div class="body-en" style="margin-top:14px;font-family:var(--f-dis);font-size:34px;font-style:italic">Knowledge without mercy can turn into harshness; mercy without knowledge falls short.</div></div>
+  <div class="abs f" style="left:0;right:0;bottom:170px;text-align:center"><div style="font:italic 500 46px/1.4 var(--f-dis);color:var(--ivory)">Knowledge without mercy can turn into harshness;<br>mercy without knowledge falls short.</div><div class="ar ar-3" style="margin-top:16px">العلم دون رحمة قد يتحول إلى قسوة… والرحمة دون علم لا تؤدي للطالب حقه</div></div>
   <aside class="notes">نهاية المحور الرابع: «معلم القرآن يحتاج إلى أمرين…»
 ① إتقان العلم ② الخط ③ حسن التعامل ④ الجملة الختامية.
 نهاية الفصل الثاني ← المترجم يقرأ الملخص II.</aside>
@@ -268,9 +281,10 @@ img[data-missing]{display:none}
   <div class="shade-all" style="background:rgba(8,15,27,.68)"></div>
   <div class="center">
     <div class="kick f fade">Chapter III · At the Prophet’s Mosque</div>
-    <div class="ar h-ar f" style="margin-top:40px;font-size:96px">تخيّلوا معي هذا المشهد</div>
-    <div class="f" style="margin-top:60px;display:flex;justify-content:center;gap:70px;font:500 46px var(--f-dis);letter-spacing:.22em;text-transform:uppercase;color:var(--brass-2)"><span>Asia</span><span>Africa</span><span>Europe</span><span>America</span></div>
-    <div class="ar f" style="margin-top:48px;font:400 46px/1.5 var(--f-ar);color:var(--ivory)">تختلف ألوانهم ولغاتهم… ويجتمعون على محبة القرآن</div>
+    <div class="en-1 f" style="margin-top:40px;font-size:100px">Imagine the scene with me</div>
+    <div class="f" style="margin-top:50px;display:flex;justify-content:center;gap:70px;font:500 50px var(--f-dis);letter-spacing:.22em;text-transform:uppercase;color:var(--brass-2)"><span>Asia</span><span>Africa</span><span>Europe</span><span>America</span></div>
+    <div class="f" style="margin-top:44px;font:italic 500 44px/1.4 var(--f-dis)">Different colors, different languages — united by love of the Qur’an</div>
+    <div class="ar ar-3 f" style="margin-top:14px">تختلف ألوانهم ولغاتهم… ويجتمعون على محبة القرآن</div>
   </div>
   <aside class="notes">المحور الخامس: «تخيلوا معي هذا المشهد…» (تحدث ببطء)
 ① العنوان ② القارات عند «من آسيا، ومن إفريقيا…» ③ «لكنهم يجتمعون على شيء واحد…»</aside>
@@ -281,9 +295,9 @@ img[data-missing]{display:none}
   <div class="shade-b"></div>
   <div class="abs f fade" style="left:0;right:0;top:0;height:220px;background:linear-gradient(180deg,rgba(8,15,27,.8),rgba(8,15,27,0))"></div>
   <div class="abs kick f fade" style="left:120px;top:84px">Al-Masjid an-Nabawi · Since 2015</div>
-  <div class="abs" style="left:0;right:0;bottom:90px;text-align:center">
-    <div class="ar f" style="font:700 96px/1.2 var(--f-ar)">أمانة… وشرف… ومسؤولية</div>
-    <div class="f" style="font:500 38px/1.3 var(--f-dis);letter-spacing:.18em;text-transform:uppercase;color:var(--brass-2);margin-top:20px">A Trust. An Honor. A Lifelong Responsibility.</div>
+  <div class="abs" style="left:0;right:0;bottom:80px;text-align:center">
+    <div class="en-1 f" style="font-size:84px">A Trust. An Honor. A Lifelong Responsibility.</div>
+    <div class="ar ar-2 f" style="margin-top:14px">أمانة… وشرف… ومسؤولية</div>
   </div>
   <aside class="notes">المحور الخامس: «في هذه البيئة المباركة، منّ الله عليّ بأن أكون من معلمي القرآن الكريم في المسجد النبوي…»
 الصورة: من حلقتك في المسجد النبوي (حسابك على إنستغرام). اترك الصورة تتحدث ثوانيَ قبل الضغط.</aside>
@@ -293,9 +307,9 @@ img[data-missing]{display:none}
   <div class="abs f fade" style="left:0;top:0;width:960px;height:1080px;overflow:hidden"><img src="../../media/own_ijazah_a.jpg" style="width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:saturate(.85)"></div>
   <div class="abs f fade" style="left:960px;top:0;width:960px;height:1080px;overflow:hidden"><img src="../../media/own_ijazah_b.jpg" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.85)"></div>
   <div class="abs" style="left:0;right:0;bottom:0;height:470px;background:linear-gradient(0deg,rgba(8,15,27,.97),rgba(8,15,27,0))"></div>
-  <div class="abs" style="left:0;right:0;bottom:90px;text-align:center">
-    <div class="ar f" style="font:700 80px/1.3 var(--f-ar)">القرآن يجمع الناس قبل أن تجمعهم اللغات</div>
-    <div class="f" style="font:500 36px/1.3 var(--f-dis);letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-2);margin-top:18px">The Qur’an brings people together before languages do</div>
+  <div class="abs" style="left:0;right:0;bottom:80px;text-align:center;color:#F2EBDD">
+    <div class="en-1 f" style="font-size:78px;color:#F2EBDD">The Qur’an brings people together<br>before languages do</div>
+    <div class="ar ar-2 f" style="margin-top:12px">القرآن يجمع الناس قبل أن تجمعهم اللغات</div>
   </div>
   <aside class="notes">المحور الخامس: «وهنا تعلمت درسًا عظيمًا…»
 ⚠️ يظهر في الصورتين طالبان — يلزم التأكد من موافقتهما على العرض العام.</aside>
@@ -304,10 +318,11 @@ img[data-missing]{display:none}
 <section class="slide" data-title="13 · Learn it and teach it">
   <canvas class="abs" id="ripple" width="1920" height="1080" style="inset:0"></canvas>
   <div class="center" style="top:46%">
-    <div class="ar f" style="font:700 100px/1.4 var(--f-ar);color:var(--brass-2)">«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»</div>
-    <div class="ar f" style="font:400 30px var(--f-ar);color:var(--muted);margin-top:8px">رواه البخاري</div>
-    <div class="f" style="font:italic 400 40px/1.4 var(--f-dis);color:var(--ivory-2);margin-top:34px">“The best of you are those who learn the Qur’an and teach it.”</div>
-    <div class="ar f" style="margin-top:60px;font:400 44px/1.5 var(--f-ar)">طالبٌ واحد اليوم… معلّمٌ لعشرة غدًا… وأثرٌ يمتد إلى من لم تَرَهم</div>
+    <div class="ar f" style="font:700 96px/1.4 var(--f-ar);color:var(--brass-2)">«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»</div>
+    <div class="f" style="font:italic 500 50px/1.4 var(--f-dis);color:var(--ivory);margin-top:22px">“The best of you are those who learn the Qur’an and teach it.”</div>
+    <div class="f" style="font:500 22px var(--f-ui);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:14px">Al-Bukhari · رواه البخاري</div>
+    <div class="en-2 f" style="margin-top:56px">One student today… a teacher of ten tomorrow… an impact that reaches people you will never meet</div>
+    <div class="ar ar-3 f" style="margin-top:12px">طالبٌ واحد اليوم… معلّمٌ لعشرة غدًا… وأثرٌ يمتد إلى من لم تَرَهم</div>
   </div>
   <aside class="notes">المحور الخامس: «فأنت قد تعلم طالبًا واحدًا اليوم…» ثم الحديث.
 الدوائر الضوئية في الخلفية تتسع تدريجيًا (نقطة ← عشرة ← مئة).
@@ -322,25 +337,25 @@ img[data-missing]{display:none}
   <div class="shade-all" style="background:rgba(8,15,27,.62)"></div>
   <div class="center">
     <div class="kick f fade">Chapter IV · A Legacy Beyond Borders</div>
-    <div class="ar h-ar f" style="margin-top:46px;font-size:96px">معلّمٌ واحد. رحلاتٌ كثيرة. قرآنٌ واحد.</div>
-    <div class="big-en f" style="margin-top:34px">One Teacher. Many Journeys. One Qur’an.</div>
+    <div class="en-1 f" style="margin-top:44px;font-size:104px">One Teacher. Many Journeys.<br>One Qur’an.</div>
+    <div class="ar ar-2 f" style="margin-top:22px">معلّمٌ واحد. رحلاتٌ كثيرة. قرآنٌ واحد.</div>
   </div>
   <aside class="notes">المحور الخامس: «وكان من أجمل ثمار هذه الرحلة أن تتلمذ على يدي طلاب من بلدان مختلفة…»
 قل جملة تمهيدية قصيرة ثم اضغط لتشغيل الفيلم (≈ 5 دقائق). لا تتحدث أثناء الفيلم.</aside>
 </section>
 
 <section class="slide" data-title="15 · Film" data-video="../../media/film_web.mp4">
-  <div class="placeholder"><div class="kick">Film</div><div>From Madinah to the World — in production</div></div>
+  <div class="placeholder"><div class="kick">Film</div><div>From Madinah to the World</div></div>
   <aside class="notes">الفيلم يبدأ تلقائيًا عند الدخول. إن لم يعمل: افتح الملف film.mp4 من مجلد media مباشرة (نسخة احتياطية).
 بعد انتهائه اضغط للمتابعة.</aside>
 </section>
 
 <section class="slide" data-title="16 · Across continents">
   <img class="abs" src="../../media/globe_all.png" style="inset:0;width:1920px;height:1080px">
-  <div class="abs" style="left:130px;top:320px;width:600px">
-    <div class="ar f" style="font:700 84px/1.3 var(--f-ar);text-align:right">القرآن يجمع القلوب<br>عبر القارات</div>
-    <div class="rule f fade" style="margin:40px 0"></div>
-    <div class="f" style="font:500 42px/1.25 var(--f-dis);letter-spacing:.12em;text-transform:uppercase">The Qur’an Connects Hearts Across Continents</div>
+  <div class="abs" style="left:130px;top:300px;width:620px">
+    <div class="en-1 f" style="font-size:80px">The Qur’an Connects Hearts Across Continents</div>
+    <div class="rule f fade" style="margin:36px 0"></div>
+    <div class="ar ar-2 f" style="text-align:left">القرآن يجمع القلوب عبر القارات</div>
   </div>
   <aside class="notes">لحظة صمت قصيرة بعد الفيلم. ثم انتقل إلى المحور السادس: «إذا سألتموني اليوم: ما أعظم ما خرجت به…»</aside>
 </section>
@@ -348,60 +363,61 @@ img[data-missing]{display:none}
 <!-- ============ V · MORE THAN MEMORIZATION ============ -->
 
 <section class="slide" data-title="17 · Two paths">
-  <div class="abs" style="left:0;right:0;top:110px;text-align:center">
+  <div class="abs" style="left:0;right:0;top:100px;text-align:center">
     <div class="kick f fade">Chapter V · More Than Memorization</div>
-    <div class="ar h-ar f" style="margin-top:30px;font-size:72px">طفلٌ في السابعة… وأول يومٍ في الحلقة</div>
+    <div class="en-1 f" style="margin-top:26px;font-size:76px">A seven-year-old’s first day in the circle</div>
+    <div class="ar ar-3 f" style="margin-top:8px">طفلٌ في السابعة… وأول يومٍ في الحلقة</div>
   </div>
-  <div class="abs" style="left:150px;right:150px;top:420px;display:grid;grid-template-columns:1fr 1px 1fr;gap:80px;text-align:center">
-    <div class="f"><div class="ar" style="font:400 44px/1.5 var(--f-ar);color:var(--muted)">غضبٌ وإحراج</div><div class="ar" style="font:700 54px/1.4 var(--f-ar);margin-top:20px">يخاف من الخطأ… ومن الحلقة</div><div style="font:400 26px var(--f-ui);color:var(--muted);margin-top:14px">He leaves afraid of making mistakes</div></div>
+  <div class="abs" style="left:150px;right:150px;top:400px;display:grid;grid-template-columns:1fr 1px 1fr;gap:80px;text-align:center">
+    <div class="f"><div style="font:italic 500 38px var(--f-dis);color:var(--muted)">Anger and embarrassment</div><div class="en-2" style="margin-top:16px;font-size:56px">He leaves afraid —<br>of mistakes, and of the circle</div><div class="ar ar-3" style="margin-top:10px">يخاف من الخطأ… ومن الحلقة</div></div>
     <div class="f fade" style="background:var(--brass)"></div>
-    <div class="f"><div class="ar" style="font:400 44px/1.5 var(--f-ar);color:var(--brass-2)">«أحسنت يا بني… لنحاول معًا»</div><div class="ar" style="font:700 54px/1.4 var(--f-ar);margin-top:20px">يحب أن يعود غدًا</div><div style="font:400 26px var(--f-ui);color:var(--ivory-2);margin-top:14px">He can’t wait to come back tomorrow</div></div>
+    <div class="f"><div style="font:italic 500 38px var(--f-dis);color:var(--brass-2)">“Well done, my son — let’s try it together.”</div><div class="en-2" style="margin-top:16px;font-size:56px">He can’t wait<br>to come back tomorrow</div><div class="ar ar-3" style="margin-top:10px">يحب أن يعود غدًا</div></div>
   </div>
-  <div class="abs f" style="left:150px;right:150px;bottom:80px"><div class="ar verse" style="font-size:50px"><span class="br">﴿</span>فَبِمَا رَحْمَةٍ مِّنَ اللَّهِ لِنتَ لَهُمْ وَلَوْ كُنتَ فَظًّا غَلِيظَ الْقَلْبِ لَانفَضُّوا مِنْ حَوْلِكَ<span class="br">﴾</span></div><div class="ar vref">[آل عمران: ١٥٩]</div></div>
+  <div class="abs f" style="left:150px;right:150px;bottom:70px"><div class="ar verse" style="font-size:48px"><span class="br">﴿</span>فَبِمَا رَحْمَةٍ مِّنَ اللَّهِ لِنتَ لَهُمْ وَلَوْ كُنتَ فَظًّا غَلِيظَ الْقَلْبِ لَانفَضُّوا مِنْ حَوْلِكَ<span class="br">﴾</span></div><div class="ar vref">[آل عمران: ١٥٩]</div></div>
   <aside class="notes">المحور السادس: «دعوني أضرب لكم مثالًا. تخيلوا طفلًا عمره سبع سنوات…»
 ① العنوان ② الطريق الأول ③ الخط ④ الطريق الثاني ⑤ الآية عند «وهنا أتذكر قول الله…».</aside>
 </section>
 
 <section class="slide" data-title="18 · Memorize, recite, understand, live">
-  <div class="abs" style="left:0;right:0;top:150px;text-align:center"><div class="ar f" style="font:400 50px var(--f-ar);color:var(--muted)">نحفظ القرآن، ونفهم القرآن، ونعيش مع القرآن</div></div>
-  <div class="words" style="top:400px">
-    <div class="word f"><div class="ar w-ar">نحفظ</div><div class="w-en">Memorize</div></div>
-    <div class="word f"><div class="ar w-ar">نتلو بإتقان</div><div class="w-en">Recite</div></div>
-    <div class="word f"><div class="ar w-ar">نفهم</div><div class="w-en">Understand</div></div>
-    <div class="word f"><div class="ar w-ar">نعمل به</div><div class="w-en">Live by It</div></div>
+  <div class="abs" style="left:0;right:0;top:140px;text-align:center"><div class="f" style="font:italic 500 46px var(--f-dis);color:var(--muted)">We memorize the Qur’an, we understand it, and we live with it</div><div class="ar ar-3 f" style="margin-top:10px">نحفظ القرآن، ونفهم القرآن، ونعيش مع القرآن</div></div>
+  <div class="words" style="top:420px;--ww:76px">
+    <div class="word f"><div class="w-en">Memorize</div><div class="ar w-ar">نحفظ</div></div>
+    <div class="word f"><div class="w-en">Recite</div><div class="ar w-ar">نتلو بإتقان</div></div>
+    <div class="word f"><div class="w-en">Understand</div><div class="ar w-ar">نفهم</div></div>
+    <div class="word f"><div class="w-en">Live by It</div><div class="ar w-ar">نعمل به</div></div>
   </div>
   <aside class="notes">المحور السابع: «إذا حفظ ابنك سورة كاملة، هل انتهت مهمتنا؟…» حتى «ولذلك أريد أن يكون شعارنا…»
 الكلمات الأربع تظهر واحدة واحدة.</aside>
 </section>
 
 <section class="slide" data-title="19 · In a child's daily life">
-  <div class="abs" style="left:0;right:0;top:130px;text-align:center">
+  <div class="abs" style="left:0;right:0;top:110px;text-align:center">
     <div class="kick f fade">The Qur’an in a Child’s Daily Life</div>
-    <div class="ar f" style="margin-top:44px;font:400 110px/1.5 var(--f-ar);color:var(--brass-2)"><span style="color:var(--brass);font-size:.85em">﴿</span>وَقُولُوا لِلنَّاسِ حُسْنًا<span style="color:var(--brass);font-size:.85em">﴾</span></div>
+    <div class="ar f" style="margin-top:36px;font:400 104px/1.5 var(--f-ar);color:var(--brass-2)"><span style="color:var(--brass);font-size:.85em">﴿</span>وَقُولُوا لِلنَّاسِ حُسْنًا<span style="color:var(--brass);font-size:.85em">﴾</span></div>
     <div class="ar vref f fade">[البقرة: ٨٣]</div>
-    <div class="f" style="font:italic 400 40px var(--f-dis);color:var(--ivory-2);margin-top:20px">“And speak to people kindly.”</div>
+    <div class="f" style="font:italic 500 54px var(--f-dis);color:var(--ivory);margin-top:16px">“And speak to people kindly.”</div>
   </div>
-  <div class="abs" style="left:200px;right:200px;bottom:120px;display:grid;grid-template-columns:repeat(3,1fr);gap:60px;text-align:center">
-    <div class="f"><div class="ar" style="font:700 44px var(--f-ar)">في المدرسة؟</div><div style="font:400 26px var(--f-ui);color:var(--muted);margin-top:10px">With a classmate</div></div>
-    <div class="f"><div class="ar" style="font:700 44px var(--f-ar)">مع أمي وأبي؟</div><div style="font:400 26px var(--f-ui);color:var(--muted);margin-top:10px">With my parents</div></div>
-    <div class="f"><div class="ar" style="font:700 44px var(--f-ar)">مع أخي الصغير؟</div><div style="font:400 26px var(--f-ui);color:var(--muted);margin-top:10px">With my little brother</div></div>
+  <div class="abs" style="left:200px;right:200px;bottom:110px;display:grid;grid-template-columns:repeat(3,1fr);gap:60px;text-align:center">
+    <div class="f"><div class="en-2" style="font-size:50px">At school?</div><div class="ar ar-3" style="margin-top:8px">في المدرسة؟</div></div>
+    <div class="f"><div class="en-2" style="font-size:50px">With my parents?</div><div class="ar ar-3" style="margin-top:8px">مع أمي وأبي؟</div></div>
+    <div class="f"><div class="en-2" style="font-size:50px">With my little brother?</div><div class="ar ar-3" style="margin-top:8px">مع أخي الصغير؟</div></div>
   </div>
   <aside class="notes">المحور السابع: «دعوني أضرب لكم مثالًا بسيطًا. عندما يحفظ الطفل قول الله…»
 الأسئلة الثلاثة تظهر مع أسئلتك: «كيف تطبق هذه الآية في المدرسة؟…»</aside>
 </section>
 
 <section class="slide" data-title="20 · Teaching the Qur'an in America">
-  <div class="abs" style="left:150px;right:150px;top:100px;display:flex;justify-content:space-between;align-items:flex-end">
-    <div><div class="kick">Teaching the Qur’an in America</div><div class="h-en" style="margin-top:24px;font-size:40px">Authentic Knowledge · Flexible Teaching</div></div>
-    <div class="ar h-ar" style="font-size:70px">الأصالة في العلم<br>والمرونة في التعليم</div>
+  <div class="abs" style="left:150px;right:150px;top:90px;display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="kick">Teaching the Qur’an in America</div><div class="en-1" style="margin-top:22px;font-size:68px">Authentic Knowledge.<br>Flexible Teaching.</div></div>
+    <div class="ar ar-2" style="font-size:44px;text-align:right">الأصالة في العلم<br>والمرونة في التعليم</div>
   </div>
-  <div class="abs" style="left:150px;right:150px;top:450px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px">
-    <div class="f" style="border-top:1px solid var(--brass);padding-top:30px"><div class="ar" style="font:700 44px/1.35 var(--f-ar);text-align:right">التلقي الأصيل</div><div style="font:500 26px/1.35 var(--f-ui);color:var(--ivory-2);margin-top:14px">Authentic Qur’anic transmission</div></div>
-    <div class="f" style="border-top:1px solid var(--brass);padding-top:30px"><div class="ar" style="font:700 44px/1.35 var(--f-ar);text-align:right">وسائل حديثة</div><div style="font:500 26px/1.35 var(--f-ui);color:var(--ivory-2);margin-top:14px">Modern teaching methods</div></div>
-    <div class="f" style="border-top:1px solid var(--brass);padding-top:30px"><div class="ar" style="font:700 44px/1.35 var(--f-ar);text-align:right">تعليم بلغتين</div><div style="font:500 26px/1.35 var(--f-ui);color:var(--ivory-2);margin-top:14px">Bilingual learning</div></div>
-    <div class="f" style="border-top:1px solid var(--brass);padding-top:30px"><div class="ar" style="font:700 44px/1.35 var(--f-ar);text-align:right">متابعة كل طالب</div><div style="font:500 26px/1.35 var(--f-ui);color:var(--ivory-2);margin-top:14px">Personal progress for every student</div></div>
+  <div class="abs" style="left:150px;right:150px;top:440px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px">
+    <div class="f" style="border-top:1px solid var(--brass);padding-top:28px"><div class="en-2" style="font-size:44px">Authentic Qur’anic transmission</div><div class="ar ar-3" style="margin-top:10px;text-align:left">التلقي الأصيل</div></div>
+    <div class="f" style="border-top:1px solid var(--brass);padding-top:28px"><div class="en-2" style="font-size:44px">Modern teaching methods</div><div class="ar ar-3" style="margin-top:10px;text-align:left">وسائل حديثة</div></div>
+    <div class="f" style="border-top:1px solid var(--brass);padding-top:28px"><div class="en-2" style="font-size:44px">Bilingual learning</div><div class="ar ar-3" style="margin-top:10px;text-align:left">تعليم بلغتين</div></div>
+    <div class="f" style="border-top:1px solid var(--brass);padding-top:28px"><div class="en-2" style="font-size:44px">Personal progress for every student</div><div class="ar ar-3" style="margin-top:10px;text-align:left">متابعة كل طالب</div></div>
   </div>
-  <div class="abs f" style="left:150px;right:150px;bottom:90px;display:flex;justify-content:space-between;font:italic 400 36px var(--f-dis);color:var(--brass-2)">
+  <div class="abs f" style="left:150px;right:150px;bottom:80px;display:flex;justify-content:space-between;font:italic 500 40px var(--f-dis);color:var(--brass-2)">
     <span>“Listen carefully, and repeat after me.”</span><span>“Good try! Let’s practice together.”</span><span>“Excellent!”</span>
   </div>
   <aside class="notes">المحور الثامن: «لقد انتقلت إلى الولايات المتحدة…» ثم «الأصالة في العلم، والمرونة في التعليم».
@@ -409,16 +425,16 @@ img[data-missing]{display:none}
 </section>
 
 <section class="slide" data-title="21 · Surah Al-'Asr">
-  <div class="abs" style="left:0;right:0;top:120px;text-align:center">
+  <div class="abs" style="left:0;right:0;top:110px;text-align:center">
     <div class="kick f fade">Surah Al-‘Asr · A Moment Together</div>
-    <div class="ar f" style="margin-top:46px;font:400 70px/1.9 var(--f-ar);color:var(--brass-2)"><span style="color:var(--brass)">﴿</span>وَالْعَصْرِ <span style="font-size:.6em;color:var(--brass)">۝١</span> إِنَّ الْإِنسَانَ لَفِي خُسْرٍ <span style="font-size:.6em;color:var(--brass)">۝٢</span><br>إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ <span style="font-size:.6em;color:var(--brass)">۝٣</span><span style="color:var(--brass)">﴾</span></div>
+    <div class="ar f" style="margin-top:40px;font:400 68px/1.9 var(--f-ar);color:var(--brass-2)"><span style="color:var(--brass)">﴿</span>وَالْعَصْرِ <span style="font-size:.6em;color:var(--brass)">۝١</span> إِنَّ الْإِنسَانَ لَفِي خُسْرٍ <span style="font-size:.6em;color:var(--brass)">۝٢</span><br>إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ <span style="font-size:.6em;color:var(--brass)">۝٣</span><span style="color:var(--brass)">﴾</span></div>
     <div class="ar vref f fade">[العصر: ١–٣]</div>
   </div>
-  <div class="words" style="top:700px">
-    <div class="word f"><div class="ar w-ar" style="font-size:64px">الإيمان</div><div class="w-en" style="font-size:26px">Faith</div></div>
-    <div class="word f"><div class="ar w-ar" style="font-size:64px">العمل الصالح</div><div class="w-en" style="font-size:26px">Good Deeds</div></div>
-    <div class="word f"><div class="ar w-ar" style="font-size:64px">التواصي بالحق</div><div class="w-en" style="font-size:26px">Truth</div></div>
-    <div class="word f"><div class="ar w-ar" style="font-size:64px">التواصي بالصبر</div><div class="w-en" style="font-size:26px">Patience</div></div>
+  <div class="words" style="top:680px">
+    <div class="word f"><div class="w-en" style="font-size:60px">Faith</div><div class="ar w-ar" style="font-size:34px">الإيمان</div></div>
+    <div class="word f"><div class="w-en" style="font-size:60px">Good Deeds</div><div class="ar w-ar" style="font-size:34px">العمل الصالح</div></div>
+    <div class="word f"><div class="w-en" style="font-size:60px">Truth</div><div class="ar w-ar" style="font-size:34px">التواصي بالحق</div></div>
+    <div class="word f"><div class="w-en" style="font-size:60px">Patience</div><div class="ar w-ar" style="font-size:34px">التواصي بالصبر</div></div>
   </div>
   <aside class="notes">المحور التاسع (تفاعلي): «من من أبنائنا يستطيع أن يقرأ سورة العصر؟» — اترك الطفل يقرأ والشاشة على العنوان فقط، ثم اضغط لإظهار السورة بعد قراءته.
 بعدها القيم الأربع واحدة واحدة.
@@ -428,100 +444,121 @@ img[data-missing]{display:none}
 <!-- ============ VI · OUR VISION ============ -->
 
 <section class="slide" data-title="22 · A journey for every student">
-  <div class="abs" style="left:150px;right:150px;top:100px;display:flex;justify-content:space-between;align-items:flex-end">
-    <div><div class="kick">Chapter VI · Our Vision</div><div class="h-en" style="margin-top:24px;font-size:42px">A Qur’anic Journey for Every Student</div></div>
-    <div class="ar h-ar" style="font-size:72px;white-space:nowrap">رحلة قرآنية لكل طالب</div>
+  <div class="abs" style="left:150px;right:150px;top:90px;display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="kick">Chapter VI · A Proposed Vision</div><div class="en-1" style="margin-top:22px;font-size:68px">A Qur’anic Journey for Every Student</div></div>
+    <div class="ar ar-2" style="font-size:44px">رحلة قرآنية لكل طالب</div>
   </div>
-  <div class="tl" style="top:430px">
+  <div class="tl" style="top:420px">
     <div class="line"><i></i></div>
     <div class="cols" style="grid-template-columns:repeat(4,1fr)">
-      <div class="c f fade"><div class="dot"></div><div class="ar t-ar" style="margin-top:40px;font-size:46px">التأسيس</div><div class="t-en" style="font-size:26px">Foundations — letters &amp; correct reading</div></div>
-      <div class="c f fade"><div class="dot"></div><div class="ar t-ar" style="margin-top:40px;font-size:46px">الحفظ والمراجعة</div><div class="t-en" style="font-size:26px">Memorization, review &amp; tajweed</div></div>
-      <div class="c f fade"><div class="dot"></div><div class="ar t-ar" style="margin-top:40px;font-size:46px">الإتقان</div><div class="t-en" style="font-size:26px">Mastery &amp; refinement</div></div>
-      <div class="c f fade"><div class="dot"></div><div class="ar t-ar" style="margin-top:40px;font-size:46px">القراءات والإجازة</div><div class="t-en" style="font-size:26px">Qira’at &amp; ijazah, for those ready</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="en-2" style="margin-top:38px;font-size:48px">Foundations</div><div class="t-en">Letters &amp; correct reading</div><div class="ar t-ar">التأسيس</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="en-2" style="margin-top:38px;font-size:48px">Memorization</div><div class="t-en">Review &amp; tajweed</div><div class="ar t-ar">الحفظ والمراجعة</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="en-2" style="margin-top:38px;font-size:48px">Mastery</div><div class="t-en">Refinement &amp; fluency</div><div class="ar t-ar">الإتقان</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="en-2" style="margin-top:38px;font-size:48px">Qira’at &amp; Ijazah</div><div class="t-en">For those who are ready</div><div class="ar t-ar">القراءات والإجازة</div></div>
     </div>
   </div>
-  <div class="abs f" style="left:0;right:0;bottom:110px;text-align:center"><div class="ar" style="font:700 52px var(--f-ar)">ولا تخجل أبدًا أن تبدأ في أي عمر</div><div style="font:italic 400 34px var(--f-dis);color:var(--ivory-2);margin-top:10px">Adults are welcome — it is never too late to begin.</div></div>
+  <div class="abs f" style="left:0;right:0;bottom:100px;text-align:center"><div class="en-2" style="font-size:52px">Adults are welcome — it is never too late to begin.</div><div class="ar ar-3" style="margin-top:10px">ولا تخجل أبدًا أن تبدأ في أي عمر</div></div>
   <aside class="notes">المحور العاشر: «ما الذي نريد أن نبنيه معًا في مسجد MAS؟… أريد أن نبني برنامجًا قرآنيًا متدرجًا…»
 المستويات تظهر واحدة واحدة. ثم الكبار عند: «ولا أريد أن ننسى الكبار…»
 تنبيه: معروضة كرؤية مقترحة، لا كوعود تشغيلية.</aside>
 </section>
 
 <section class="slide" data-title="23 · Tomorrow's teachers">
-  <svg class="star" style="left:50%;top:50%;width:900px;height:900px;margin:-450px 0 0 -450px"><use href="#star8"></use></svg>
+  <svg class="star" style="left:50%;top:50%;width:900px;height:900px;margin:-450px 0 0 -450px"><use href="#star8"/></svg>
   <div class="center">
-    <div class="ar f" style="font:400 50px/1.6 var(--f-ar);color:var(--muted)">حلمي ألّا نكتفي بأن نقول: لدينا حلقة قرآن ناجحة…</div>
-    <div class="ar big-ar f" style="margin-top:30px;font-size:88px">بل حلقةٌ أخرجت معلّمين وحفّاظًا<br>يخدمون القرآن في أمريكا وخارجها</div>
-    <div class="big-en f" style="margin-top:44px;font-size:38px">Preparing Tomorrow’s Qur’an Teachers</div>
+    <div class="f" style="font:italic 500 44px/1.4 var(--f-dis);color:var(--muted)">My dream is not only to say: we have a successful Qur’an class…</div>
+    <div class="en-1 f" style="margin-top:26px;font-size:62px">…but a class that produced teachers and huffadh,<br>serving the Qur’an across America and beyond</div>
+    <div class="ar ar-2 f" style="margin-top:34px">بل حلقةٌ أخرجت معلّمين وحفّاظًا يخدمون القرآن في أمريكا وخارجها</div>
   </div>
   <aside class="notes">نهاية المحور العاشر: «وأطمح كذلك إلى إعداد الطلاب المتميزين…» ثم «حلمي أن يأتي يوم…»</aside>
 </section>
 
-<section class="slide" data-title="24 · Parents as partners">
+<section class="slide" data-title="24 · First, we listen">
   <div class="abs" style="left:150px;right:150px;top:100px;display:flex;justify-content:space-between;align-items:flex-end">
-    <div><div class="kick">To Every Father and Mother</div><div class="h-en" style="margin-top:24px;font-size:42px">Parents as Partners</div></div>
-    <div class="ar h-ar" style="font-size:72px;white-space:nowrap">الآباء والأمهات شركاء</div>
+    <div><div class="kick">How We Will Begin</div><div class="en-1" style="margin-top:22px;font-size:72px">First, We Listen</div></div>
+    <div class="ar ar-2" style="font-size:44px">نبدأ بالاستماع</div>
   </div>
-  <div class="abs" style="left:150px;right:150px;top:400px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center">
-    <div class="f"><div style="font:500 110px/1 var(--f-dis);color:var(--brass)">10</div><div class="ar" style="font:700 38px/1.4 var(--f-ar);margin-top:14px">دقائق يوميًا في البيت</div><div style="font:400 24px var(--f-ui);color:var(--muted);margin-top:8px">minutes a day at home</div></div>
-    <div class="f"><div class="ar" style="font:700 64px/1.65 var(--f-ar);color:var(--brass)">استمعوا</div><div class="ar" style="font:700 38px/1.4 var(--f-ar);margin-top:14px">إلى ما حفظوه</div><div style="font:400 24px var(--f-ui);color:var(--muted);margin-top:8px">Listen to them recite</div></div>
-    <div class="f"><div class="ar" style="font:700 64px/1.65 var(--f-ar);color:var(--brass)">شجّعوا</div><div class="ar" style="font:700 38px/1.4 var(--f-ar);margin-top:14px">الجهد قبل الدرجة</div><div style="font:400 24px var(--f-ui);color:var(--muted);margin-top:8px">Praise effort, not only scores</div></div>
-    <div class="f"><div class="ar" style="font:700 64px/1.65 var(--f-ar);color:var(--brass)">لا تقارنوا</div><div class="ar" style="font:700 38px/1.4 var(--f-ar);margin-top:14px">لكل طفل قدرته</div><div style="font:400 24px var(--f-ui);color:var(--muted);margin-top:8px">Every child at their own pace</div></div>
+  <div class="tl" style="top:420px">
+    <div class="line"><i></i></div>
+    <div class="cols" style="grid-template-columns:repeat(3,1fr)">
+      <div class="c f fade"><div class="dot"></div><div class="en-2" style="margin-top:38px;font-size:50px">Listen &amp; Learn</div><div class="t-en" style="padding:0 40px">One week inside the current program — classes, teachers, students and parents</div><div class="ar t-ar">أسبوعٌ أتعرّف فيه على البرنامج: الحلقات والمعلمين والطلاب وأولياء الأمور</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="en-2" style="margin-top:38px;font-size:50px">Plan Together</div><div class="t-en" style="padding:0 40px">Then a clear plan, shared with and agreed by the MAS leadership</div><div class="ar t-ar">ثم خطةٌ واضحة أعرضها على إدارة المسجد ونعتمدها معًا</div></div>
+      <div class="c f fade"><div class="dot"></div><div class="en-2" style="margin-top:38px;font-size:50px">Build on What Was Planted</div><div class="t-en" style="padding:0 40px">We continue the good that is already here — and grow it</div><div class="ar t-ar">ونبني على ما غُرس من خير، ونُنمّيه</div></div>
+    </div>
   </div>
-  <div class="abs f" style="left:150px;right:150px;bottom:90px"><div class="ar verse" style="font-size:52px"><span class="br">﴿</span>إِنَّ هَـٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ<span class="br">﴾</span></div><div class="ar vref">[الإسراء: ٩]</div></div>
+  <aside class="notes">جديدة — بعد المحور العاشر (رؤيتنا)، وقبل رسالة الآباء.
+جملة مقترحة تقولها (ليست في نص الكلمة الأصلي): «وقد اتفقتُ مع إدارة المسجد أن أبدأ بأسبوع أتعرّف فيه على البرنامج القائم، وأستمع إلى المعلمين والطلاب وأولياء الأمور، ثم أضع خطتي وأعرضها على الإدارة لنعتمدها معًا، ونبني على ما غُرس من خير.»
+① أسبوع الاستماع ② الخطة مع الإدارة ③ البناء على ما غُرس.</aside>
+</section>
+
+<section class="slide" data-title="25 · Parents as partners">
+  <div class="abs" style="left:150px;right:150px;top:90px;display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="kick">To Every Father and Mother</div><div class="en-1" style="margin-top:22px;font-size:72px">Parents as Partners</div></div>
+    <div class="ar ar-2" style="font-size:44px">الآباء والأمهات شركاء</div>
+  </div>
+  <div class="abs" style="left:150px;right:150px;top:380px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center">
+    <div class="f"><div style="font:600 120px/1 var(--f-dis);color:var(--brass)">10</div><div class="en-2" style="margin-top:12px;font-size:42px">minutes a day at home</div><div class="ar ar-3" style="margin-top:8px">دقائق يوميًا في البيت</div></div>
+    <div class="f"><div class="en-1" style="font-size:72px;color:var(--brass)">Listen</div><div class="en-2" style="margin-top:12px;font-size:42px">to them recite</div><div class="ar ar-3" style="margin-top:8px">استمعوا إلى ما حفظوه</div></div>
+    <div class="f"><div class="en-1" style="font-size:72px;color:var(--brass)">Praise</div><div class="en-2" style="margin-top:12px;font-size:42px">effort, not only scores</div><div class="ar ar-3" style="margin-top:8px">شجّعوا الجهد قبل الدرجة</div></div>
+    <div class="f"><div class="en-1" style="font-size:72px;color:var(--brass)">Don’t compare</div><div class="en-2" style="margin-top:12px;font-size:42px">every child at their own pace</div><div class="ar ar-3" style="margin-top:8px">لا تقارنوا؛ لكل طفل قدرته</div></div>
+  </div>
+  <div class="abs f" style="left:150px;right:150px;bottom:70px"><div class="ar verse" style="font-size:50px"><span class="br">﴿</span>إِنَّ هَـٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ<span class="br">﴾</span></div><div class="ar vref">[الإسراء: ٩]</div><div class="vtr">“Indeed, this Qur’an guides to that which is most upright.”</div></div>
   <aside class="notes">المحور الحادي عشر: «اسمحوا لي الآن أن أوجه رسالة خاصة إلى كل أب وأم…»
 الآية عند: «والله سبحانه وتعالى يقول…» — ثم البطاقات الأربع عند «لكنني أحتاج إلى تعاونكم…».
 (ترتيب الضغطات: البطاقات ثم الآية؛ إن أردت الآية أولًا فاضغط حتى تظهر وتحدث فوق البطاقات.)</aside>
 </section>
 
-<section class="slide" data-title="25 · To our children">
-  <div class="abs" style="left:0;right:0;top:110px;text-align:center">
+<section class="slide" data-title="26 · To our children">
+  <div class="abs" style="left:0;right:0;top:100px;text-align:center">
     <div class="kick f fade">To Our Sons and Daughters</div>
-    <div class="ar h-ar f" style="margin-top:30px;font-size:80px">أبنائي وبناتي… ثلاثة أشياء</div>
+    <div class="en-1 f" style="margin-top:26px;font-size:80px">Three things I ask of you</div>
+    <div class="ar ar-3 f" style="margin-top:8px">أبنائي وبناتي… ثلاثة أشياء</div>
   </div>
-  <div class="words" style="top:400px">
-    <div class="word f"><div class="ar w-ar" style="font-size:82px">أحبّوا القرآن</div><div class="w-en">Love it</div></div>
-    <div class="word f"><div class="ar w-ar" style="font-size:82px">اجتهدوا فيه</div><div class="w-en">Work at it</div></div>
-    <div class="word f"><div class="ar w-ar" style="font-size:82px">لا تستسلموا</div><div class="w-en">Never give up</div></div>
+  <div class="words" style="top:390px">
+    <div class="word f"><div class="w-en">Love It</div><div class="ar w-ar">أحبّوا القرآن</div></div>
+    <div class="word f"><div class="w-en">Work at It</div><div class="ar w-ar">اجتهدوا فيه</div></div>
+    <div class="word f"><div class="w-en">Never Give Up</div><div class="ar w-ar">لا تستسلموا</div></div>
   </div>
-  <div class="abs f" style="left:160px;right:160px;bottom:90px;text-align:center"><div class="ar" style="font:400 44px/1.6 var(--f-ar);color:var(--brass-2)">«الْمَاهِرُ بِالْقُرْآنِ مَعَ السَّفَرَةِ الْكِرَامِ الْبَرَرَةِ، وَالَّذِي يَقْرَأُ الْقُرْآنَ وَيَتَتَعْتَعُ فِيهِ وَهُوَ عَلَيْهِ شَاقٌّ لَهُ أَجْرَانِ»</div><div class="ar vref">متفق عليه</div><div class="vtr" style="font-size:30px">The one who struggles with the Qur’an receives a double reward.</div></div>
+  <div class="abs f" style="left:160px;right:160px;bottom:80px;text-align:center"><div class="ar" style="font:400 42px/1.6 var(--f-ar);color:var(--brass-2)">«الْمَاهِرُ بِالْقُرْآنِ مَعَ السَّفَرَةِ الْكِرَامِ الْبَرَرَةِ، وَالَّذِي يَقْرَأُ الْقُرْآنَ وَيَتَتَعْتَعُ فِيهِ وَهُوَ عَلَيْهِ شَاقٌّ لَهُ أَجْرَانِ»</div><div class="vtr" style="font-size:38px">“The one who struggles with the Qur’an receives a double reward.”</div><div class="ar vref">متفق عليه</div></div>
   <aside class="notes">المحور الثاني عشر: «والآن أريد أن أتحدث إلى أبنائي وبناتي…» (انظر إليهم وابتسم)
 ① ② ③ الأشياء الثلاثة ④ الحديث.
 تنبيه علمي: اللفظ بـ«له أجران» لمسلم؛ ولفظ البخاري مختلف — قد تفضّل «رواه مسلم» أو «متفق عليه بنحوه». القرار لك.</aside>
 </section>
 
-<section class="slide" data-title="26 · The values we carry">
+<section class="slide" data-title="27 · The values we carry">
   <div class="ph"><img src="../../media/n_dome.jpg" style="object-position:50% 40%;filter:saturate(.7) brightness(.55)"></div>
   <div class="shade-all" style="background:rgba(8,15,27,.66)"></div>
-  <div class="abs" style="left:0;right:0;top:120px;text-align:center">
+  <div class="abs" style="left:0;right:0;top:110px;text-align:center">
     <div class="kick f fade">From Madinah to the World</div>
-    <div class="ar h-ar f" style="margin-top:30px;font-size:72px">لا نصنع نسخةً شكلية… بل ننقل القيم</div>
+    <div class="en-1 f" style="margin-top:26px;font-size:72px">Not a copy of a place — the values it taught us</div>
+    <div class="ar ar-3 f" style="margin-top:8px">لا نصنع نسخةً شكلية… بل ننقل القيم</div>
   </div>
-  <div class="abs" style="left:140px;right:140px;top:470px;display:grid;grid-template-columns:repeat(7,1fr);gap:16px;text-align:center">
-    <div class="f"><div class="ar" style="font:700 46px/1.3 var(--f-ar)">تعظيم القرآن</div><div style="font:500 22px var(--f-ui);color:var(--brass);margin-top:12px;letter-spacing:.12em">REVERENCE</div></div>
-    <div class="f"><div class="ar" style="font:700 46px/1.3 var(--f-ar)">الإتقان</div><div style="font:500 22px var(--f-ui);color:var(--brass);margin-top:12px;letter-spacing:.12em">MASTERY</div></div>
-    <div class="f"><div class="ar" style="font:700 46px/1.3 var(--f-ar)">الاحترام</div><div style="font:500 22px var(--f-ui);color:var(--brass);margin-top:12px;letter-spacing:.12em">RESPECT</div></div>
-    <div class="f"><div class="ar" style="font:700 46px/1.3 var(--f-ar)">الرحمة</div><div style="font:500 22px var(--f-ui);color:var(--brass);margin-top:12px;letter-spacing:.12em">MERCY</div></div>
-    <div class="f"><div class="ar" style="font:700 46px/1.3 var(--f-ar)">الصبر</div><div style="font:500 22px var(--f-ui);color:var(--brass);margin-top:12px;letter-spacing:.12em">PATIENCE</div></div>
-    <div class="f"><div class="ar" style="font:700 46px/1.3 var(--f-ar)">المداومة</div><div style="font:500 22px var(--f-ui);color:var(--brass);margin-top:12px;letter-spacing:.12em">CONSISTENCY</div></div>
-    <div class="f"><div class="ar" style="font:700 46px/1.3 var(--f-ar)">الفرح بالتقدم</div><div style="font:500 22px var(--f-ui);color:var(--brass);margin-top:12px;letter-spacing:.12em">JOY</div></div>
+  <div class="abs" style="left:120px;right:120px;top:450px;display:grid;grid-template-columns:repeat(7,1fr);gap:14px;text-align:center">
+    <div class="f"><div class="en-2" style="font-size:42px">Reverence</div><div class="ar ar-3" style="font-size:30px;margin-top:8px">تعظيم القرآن</div></div>
+    <div class="f"><div class="en-2" style="font-size:42px">Mastery</div><div class="ar ar-3" style="font-size:30px;margin-top:8px">الإتقان</div></div>
+    <div class="f"><div class="en-2" style="font-size:42px">Respect</div><div class="ar ar-3" style="font-size:30px;margin-top:8px">الاحترام</div></div>
+    <div class="f"><div class="en-2" style="font-size:42px">Mercy</div><div class="ar ar-3" style="font-size:30px;margin-top:8px">الرحمة</div></div>
+    <div class="f"><div class="en-2" style="font-size:42px">Patience</div><div class="ar ar-3" style="font-size:30px;margin-top:8px">الصبر</div></div>
+    <div class="f"><div class="en-2" style="font-size:42px">Consistency</div><div class="ar ar-3" style="font-size:30px;margin-top:8px">المداومة</div></div>
+    <div class="f"><div class="en-2" style="font-size:42px">Joy</div><div class="ar ar-3" style="font-size:30px;margin-top:8px">الفرح بالتقدم</div></div>
   </div>
   <aside class="notes">المحور الثالث عشر: «أريد أن أعود معكم إلى المدينة المنورة مرة أخرى…» حتى «ليس هدفي أن نصنع نسخة شكلية… ولكنني أتمنى أن ننقل إلى هنا القيم…»
 القيم السبع تظهر واحدة واحدة مع ذكرك لها.</aside>
 </section>
 
-<section class="slide" data-title="27 · A covenant between us">
-  <div class="abs" style="left:0;right:0;top:120px;text-align:center">
+<section class="slide" data-title="28 · A covenant between us">
+  <div class="abs" style="left:0;right:0;top:100px;text-align:center">
     <div class="kick f fade">A Covenant Between Us</div>
-    <div class="ar h-ar f" style="margin-top:30px;font-size:84px">عهدٌ بيننا</div>
+    <div class="en-1 f" style="margin-top:26px;font-size:84px">We Build It Together</div>
+    <div class="ar ar-3 f" style="margin-top:8px">عهدٌ بيننا</div>
   </div>
-  <div class="abs" style="left:240px;right:240px;top:420px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center">
-    <div class="f"><div style="width:220px;height:220px;border-radius:50%;border:1px solid var(--brass);margin:0 auto;display:flex;align-items:center;justify-content:center" class="ar"><span style="font:700 50px var(--f-ar)">الأسرة</span></div><div style="font:500 26px var(--f-dis);letter-spacing:.2em;color:var(--ivory-2);margin-top:20px">FAMILY</div></div>
-    <div class="f"><div style="width:220px;height:220px;border-radius:50%;border:1px solid var(--brass);margin:0 auto;display:flex;align-items:center;justify-content:center" class="ar"><span style="font:700 50px var(--f-ar)">المعلّم</span></div><div style="font:500 26px var(--f-dis);letter-spacing:.2em;color:var(--ivory-2);margin-top:20px">TEACHER</div></div>
-    <div class="f"><div style="width:220px;height:220px;border-radius:50%;border:1px solid var(--brass);margin:0 auto;display:flex;align-items:center;justify-content:center" class="ar"><span style="font:700 50px var(--f-ar)">المسجد</span></div><div style="font:500 26px var(--f-dis);letter-spacing:.2em;color:var(--ivory-2);margin-top:20px">MASJID</div></div>
-    <div class="f"><div style="width:220px;height:220px;border-radius:50%;border:1px solid var(--brass);margin:0 auto;display:flex;align-items:center;justify-content:center" class="ar"><span style="font:700 50px var(--f-ar)">المجتمع</span></div><div style="font:500 26px var(--f-dis);letter-spacing:.2em;color:var(--ivory-2);margin-top:20px">COMMUNITY</div></div>
+  <div class="abs" style="left:240px;right:240px;top:400px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center">
+    <div class="f"><div style="width:260px;height:260px;border-radius:50%;border:1px solid var(--brass);margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center"><span class="en-2" style="font-size:44px">Family</span><span class="ar ar-3" style="font-size:30px">الأسرة</span></div></div>
+    <div class="f"><div style="width:260px;height:260px;border-radius:50%;border:1px solid var(--brass);margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center"><span class="en-2" style="font-size:44px">Teacher</span><span class="ar ar-3" style="font-size:30px">المعلّم</span></div></div>
+    <div class="f"><div style="width:260px;height:260px;border-radius:50%;border:1px solid var(--brass);margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center"><span class="en-2" style="font-size:44px">Masjid</span><span class="ar ar-3" style="font-size:30px">المسجد</span></div></div>
+    <div class="f"><div style="width:260px;height:260px;border-radius:50%;border:1px solid var(--brass);margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center"><span class="en-2" style="font-size:40px">Community</span><span class="ar ar-3" style="font-size:30px">المجتمع</span></div></div>
   </div>
-  <div class="abs f" style="left:0;right:0;bottom:120px;text-align:center"><div class="ar" style="font:400 46px var(--f-ar);color:var(--brass-2)">نجاحٌ لا يُنسب إلى شخص واحد</div><div style="font:italic 400 32px var(--f-dis);color:var(--ivory-2);margin-top:10px">A success that belongs to all of us.</div></div>
+  <div class="abs f" style="left:0;right:0;bottom:110px;text-align:center"><div class="en-2" style="font-size:52px">A success that belongs to all of us</div><div class="ar ar-3" style="margin-top:8px">نجاحٌ لا يُنسب إلى شخص واحد</div></div>
   <aside class="notes">المحور الرابع عشر: «لا أحب أن أنهي لقائي الأول بكم دون أن أتحدث عن المسؤولية…»
 الدوائر الأربع عند: «إنه نجاح الأسرة. والمعلم. والمسجد. والمجتمع كله.»
 نهاية الفصل السادس ← المترجم يقرأ الملخص VI.</aside>
@@ -529,15 +566,15 @@ img[data-missing]{display:none}
 
 <!-- ============ VII · CLOSING ============ -->
 
-<section class="slide" data-title="28 · The walls of the Prophet's Mosque">
+<section class="slide" data-title="29 · The walls of the Prophet's Mosque">
   <div class="ph kb"><img class="grade" src="../../media/n_night.jpg" style="object-position:50% 60%"></div>
-  <div class="ph f fade" style="transition-duration:4s"><img src="../../media/mas_photo.jpg" onerror="this.dataset.missing=1" style="object-position:50% 50%;filter:saturate(.85) brightness(.75)" data-missing="1"></div>
+  <div class="ph f fade" style="transition-duration:4s"><img src="../../media/mas_photo.jpg" onerror="this.dataset.missing=1" style="object-position:50% 50%;filter:saturate(.85) brightness(.75)"></div>
   <div class="shade-all" style="background:rgba(8,15,27,.72)"></div>
   <div class="center">
-    <div class="ar f" style="font:700 66px/1.6 var(--f-ar)">لا نستطيع أن ننقل جدران المسجد النبوي إلى هنا…</div>
-    <div class="ar f" style="font:700 66px/1.6 var(--f-ar);color:var(--brass-2);margin-top:10px">ولكننا نستطيع بإذن الله أن ننقل<br>بعضًا من قيم التعليم القرآني التي تعلّمناها في رحابه</div>
-    <div class="rule f fade" style="margin:56px 320px 44px"></div>
-    <div class="f" style="font:500 34px/1.55 var(--f-dis);letter-spacing:.1em;text-transform:uppercase;color:var(--ivory-2)">We cannot bring the walls of the Prophet’s Mosque to America —<br>but we can carry forward the values of Qur’anic education<br>we learned within its walls.</div>
+    <div class="en-1 f" style="font-size:74px">We cannot bring the walls of the Prophet’s Mosque to America…</div>
+    <div class="en-1 f" style="font-size:74px;color:var(--brass-2);margin-top:14px">…but we can carry forward the values of Qur’anic education we learned within its walls.</div>
+    <div class="rule f fade" style="margin:50px 320px 40px"></div>
+    <div class="ar ar-2 f" style="font-size:44px">لا نستطيع أن ننقل جدران المسجد النبوي إلى هنا… ولكننا نستطيع بإذن الله أن ننقل بعضًا من قيم التعليم القرآني التي تعلّمناها في رحابه</div>
   </div>
   <aside class="notes">المحور الخامس عشر — اخفض صوتك وتحدث ببطء: «عندما أعود بذاكرتي إلى المدينة المنورة…»
 (إن توفرت صورة مسجد MAS فهي تظهر ببطء فوق صورة المسجد النبوي مع الضغطة الأولى.)
@@ -545,13 +582,13 @@ img[data-missing]{display:none}
 ثم تابع: «قيم الرحمة. والعلم. والإتقان…» وانتقل للشريحة الأخيرة عند: «وأتطلع إلى أن نبدأ معًا…»</aside>
 </section>
 
-<section class="slide" data-title="29 · Our journey begins together">
-  <svg class="star" style="left:50%;top:50%;width:980px;height:980px;margin:-490px 0 0 -490px;opacity:.06"><use href="#star8"></use></svg>
+<section class="slide" data-title="30 · Our journey begins together">
+  <svg class="star" style="left:50%;top:50%;width:980px;height:980px;margin:-490px 0 0 -490px;opacity:.06"><use href="#star8"/></svg>
   <div class="center">
-    <div class="ar f" style="font:700 120px/1.3 var(--f-ar)">رحلتنا تبدأ معًا</div>
-    <div class="f" style="font:500 52px var(--f-dis);letter-spacing:.26em;text-transform:uppercase;margin-top:22px">Our Journey Begins Together</div>
-    <div class="f fade" style="margin:70px auto 0;width:420px;height:3px;background:linear-gradient(90deg,var(--mas-blue),var(--mas-green))"></div>
-    <img class="f fade" src="../../media/mas_white.png" style="width:440px;margin-top:60px">
+    <div class="en-1 f" style="font-size:120px">Our Journey Begins Together</div>
+    <div class="ar ar-2 f" style="margin-top:20px;font-size:60px">رحلتنا تبدأ معًا</div>
+    <div class="f fade" style="margin:64px auto 0;width:420px;height:3px;background:linear-gradient(90deg,var(--mas-blue),var(--mas-green))"></div>
+    <div class="f fade" style="margin-top:56px"><img class="logo-dark" src="../../media/mas_white.png" style="width:440px"><img class="logo-light" src="../../media/mas_color.png" style="width:440px"></div>
   </div>
   <aside class="notes">الختام: «وأتطلع إلى أن نبدأ معًا، بإذن الله، رحلة مباركة مع كتاب الله…»
 ① رحلتنا تبدأ معًا ② الإنجليزية ③ خط بلوني MAS ④ الشعار.
@@ -559,7 +596,7 @@ img[data-missing]{display:none}
 نهاية العرض ← المترجم يقرأ الملخص VII.</aside>
 </section>
 
-<section class="slide" data-title="30 · Credits (after the talk)">
+<section class="slide" data-title="31 · Credits (after the talk)">
   <div class="abs" style="left:160px;right:160px;top:150px">
     <div class="kick">Credits</div>
     <div style="font:400 26px/1.9 var(--f-ui);color:var(--muted);margin-top:40px">
@@ -768,7 +805,6 @@ img[data-missing]{display:none}
   }
 })();
 </script>
-<script src="../../editor/editor.js" defer=""></script>
-
-
-</body></html>
+<script src="../../editor/editor.js" defer></script>
+</body>
+</html>
