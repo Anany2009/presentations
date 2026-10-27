@@ -161,6 +161,7 @@
     const f = e.target.files[0];
     if (!f || !target) return;
     pending.set(target, f);
+    target.removeAttribute('data-missing');
     target.src = URL.createObjectURL(f);
     target.closest('.por')?.querySelector('.mono')?.remove();
     dirty = true;
@@ -215,6 +216,8 @@
     doc.querySelectorAll('.on,.in,.tone-dark,.ed-locked,.editing,.cursor').forEach(n => n.classList.remove('on', 'in', 'tone-dark', 'ed-locked', 'editing', 'cursor'));
     doc.querySelectorAll('[class=""]').forEach(n => n.removeAttribute('class'));
     doc.querySelectorAll('.tl .line i').forEach(n => n.removeAttribute('style'));
+    doc.querySelector('#stage')?.removeAttribute('style');
+    doc.querySelectorAll('[data-missing]').forEach(n => n.removeAttribute('data-missing'));
     doc.querySelectorAll('.placeholder').forEach(n => n.style.removeProperty('display'));
     const num = doc.querySelector('#num'); if (num) { num.textContent = ''; num.removeAttribute('style'); }
     return '<!doctype html>\n' + doc.outerHTML;
