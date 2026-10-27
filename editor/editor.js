@@ -136,7 +136,16 @@
     a.textContent = e.target.value;
     dirty = true;
   };
-  $('#ed-theme').onchange = e => { document.documentElement.dataset.theme = e.target.value; dirty = true; };
+  $('#ed-theme').onchange = e => {
+    document.documentElement.dataset.theme = e.target.value;
+    dirty = true;
+    // photo slides keep a dark overlay in every theme; jump to a text slide so the change is visible
+    if (deck.slides[deck.cur].classList.contains('tone-dark')) {
+      const i = deck.slides.findIndex((s, k) => k > deck.cur && !s.classList.contains('tone-dark'));
+      if (i >= 0) go(i);
+    }
+    status('تغيّر التصميم. يظهر بوضوح في الشرائح النصية؛ شرائح الصور تبقى داكنة ليُقرأ النص فوقها. اضغط «حفظ ونشر» لاعتماده.', 'ok');
+  };
 
   /* ---------- photos ---------- */
   let target = null;
