@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>عروض د. محمد عطية</title>
+<style>
+@font-face{font-family:'Amiri';src:url('fonts/Amiri-Regular.ttf');font-weight:400}
+@font-face{font-family:'Amiri';src:url('fonts/Amiri-Bold.ttf');font-weight:700}
+@font-face{font-family:'Inter';src:url('fonts/Inter-var.ttf');font-weight:100 900}
+:root{--ink:#0B1626;--ink2:#0F1E33;--ivory:#F2EBDD;--muted:#A99F8E;--brass:#C9A86A}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--ink);color:var(--ivory);font:16px/1.6 'Inter',system-ui,sans-serif}
+main{max-width:880px;margin:0 auto;padding:72px 16px}
+.kick{font:500 13px 'Inter';letter-spacing:.38em;text-transform:uppercase;color:var(--brass);direction:ltr;text-align:right}
+h1{font:700 44px/1.3 'Amiri',serif;margin:14px 0 8px}
+p.sub{color:var(--muted);margin:0 0 48px}
+ul{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+a.card{display:block;padding:22px 24px;background:var(--ink2);border:1px solid #22344f;border-radius:10px;color:inherit;text-decoration:none;transition:border-color .2s}
+a.card:hover{border-color:var(--brass)}
+a.card b{display:block;font:700 26px/1.4 'Amiri',serif}
+a.card span{color:var(--muted);font-size:14px}
+footer{margin-top:56px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <div class="kick">Presentations</div>
+  <h1>العروض</h1>
+  <p class="sub">افتح أي عرض للتقديم. للتعديل: اضغط زر ✎ أسفل الشاشة أو حرف E.</p>
+  <ul id="list"><li style="color:var(--muted)">…</li></ul>
+  <footer>للتنقل: الأسهم أو جهاز التحكم · F ملء الشاشة · P ملاحظات المتحدث · B شاشة سوداء</footer>
+</main>
+<script>
+fetch('presentations.json', {cache: 'no-store'}).then(r => r.json()).then(items => {
+  const ul = document.getElementById('list');
+  ul.innerHTML = '';
+  items.forEach(i => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.className = 'card'; a.href = `p/${i.slug}/`;
+    const b = document.createElement('b'); b.textContent = i.title;
+    const s = document.createElement('span'); s.textContent = i.created || '';
+    a.append(b, s); li.append(a); ul.append(li);
+  });
+}).catch(() => { document.getElementById('list').innerHTML = '<li>تعذّر تحميل القائمة.</li>'; });
+</script>
+</body>
+</html>
