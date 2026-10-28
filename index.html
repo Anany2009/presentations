@@ -16,6 +16,7 @@ main{max-width:880px;margin:0 auto;padding:72px 16px}
 h1{font:700 44px/1.3 'Amiri',serif;margin:14px 0 8px}
 p.sub{color:var(--muted);margin:0 0 48px}
 ul{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.dl .card span{margin-top:6px;font-size:14px;color:var(--muted)}
 a.card{display:block;padding:22px 24px;background:var(--ink2);border:1px solid #22344f;border-radius:10px;color:inherit;text-decoration:none;transition:border-color .2s}
 a.card:hover{border-color:var(--brass)}
 a.card b{display:block;font:700 26px/1.4 'Amiri',serif}
@@ -25,11 +26,18 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 </head>
 <body>
 <main>
-  <div class="kick">Presentations</div>
-  <h1>العروض</h1>
-  <p class="sub">افتح أي عرض للتقديم. للتعديل: اضغط زر ✎ أسفل الشاشة أو حرف E.</p>
+  <div class="kick">Presentations · العروض</div>
+  <h1 style="direction:ltr;text-align:left;font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:34px">Dr. Mohamed Attia</h1>
+  <p class="sub" style="direction:ltr;text-align:left">Open a presentation to view it in the browser (full screen: press F).<br><span style="direction:rtl;display:block;text-align:right">افتح العرض لمشاهدته في المتصفح، واضغط F لملء الشاشة.</span></p>
   <ul id="list"><li style="color:var(--muted)">…</li></ul>
-  <footer>للتنقل: الأسهم أو جهاز التحكم · F ملء الشاشة · P ملاحظات المتحدث · B شاشة سوداء</footer>
+
+  <h2 style="font:600 22px Inter,system-ui,sans-serif;direction:ltr;text-align:left;margin:52px 0 14px;color:var(--brass)">Downloads · التحميل</h2>
+  <ul class="dl">
+    <li><a class="card" href="https://github.com/Anany2009/presentations/releases/download/v1/MAS-Sacramento-PowerPoint.zip"><b style="font:600 20px Inter,system-ui,sans-serif;direction:ltr;text-align:left">PowerPoint (editable) · 314 MB</b><span style="display:block;direction:ltr;text-align:left">32 slides, the film on slide 15, presenter notes. Install the included fonts first.</span><span style="display:block">العرض قابلًا للتعديل، والفيلم في الشريحة 15. ثبّت الخطوط المرفقة أولًا.</span></a></li>
+    <li><a class="card" href="https://github.com/Anany2009/presentations/releases/download/v1/From-Madinah-to-Sacramento.pdf"><b style="font:600 20px Inter,system-ui,sans-serif;direction:ltr;text-align:left">PDF preview · 4 MB</b><span style="display:block;direction:ltr;text-align:left">Every slide, for a quick review.</span><span style="display:block">كل الشرائح للاطلاع السريع.</span></a></li>
+    <li><a class="card" href="https://github.com/Anany2009/presentations/releases/download/v1/From-Madinah-to-the-World-film.mp4"><b style="font:600 20px Inter,system-ui,sans-serif;direction:ltr;text-align:left">The film: From Madinah to the World · 5 min · 307 MB</b><span style="display:block;direction:ltr;text-align:left">Student testimonials from Spain, Mali, Bangladesh and Indonesia, full quality.</span><span style="display:block">شهادات الطلاب بجودتها الكاملة.</span></a></li>
+  </ul>
+  <footer>Arrows or clicker to move · F full screen · P presenter notes · B black screen<br>للتنقل: الأسهم أو جهاز التحكم · F ملء الشاشة · P ملاحظات المتحدث · B شاشة سوداء</footer>
 </main>
 <script>
 fetch('presentations.json', {cache: 'no-store'}).then(r => r.json()).then(items => {
