@@ -18,6 +18,10 @@
 ## Owner's own material
 - Photos from Dr. Mohamed Attia's Instagram (@drmohamedattia01) and student testimonial videos sent by the students to Dr. Mohamed Attia. Sheikhs' portraits supplied by the owner.
 
+## Sound
+- Adhan (opening of the film): recording supplied by Dr. Mohamed Attia.
+- Transition sound design: original, synthesised for this film (tools/sfx.py); no third-party samples.
+
 ## Earth imagery
 - NASA Earth Observatory — Black Marble 2016 (night lights) and Blue Marble Next Generation. Public domain.
 
